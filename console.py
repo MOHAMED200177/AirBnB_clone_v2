@@ -127,19 +127,19 @@ class HBNBCommand(cmd.Cmd):
         # create User email=1.1 pwassword="aasdasd"
 
         args_dict = {}
-        for attribute in args_list[1:]:
-            if '=' in attribute:
-                attr_list = attribute.split("=")
+        for attr in args_list[1:]:
+            if '=' in attr:
+                attr_list = attr.split("=")
                 if attr_list[1][0] == '"' and attr_list[1][-1] == '"':
-                    attr_value = attr_list[1].strip('"').replace('_', ' ')
+                    attr_v = attr_list[1].strip('"').replace('_', ' ')
                 elif attr_list[1].isdigit():
-                    attr_value = int(attr_list[1])
+                    attr_v = int(attr_list[1])
                 else:
                     try:
-                        attr_value = float(attr_list[1])
+                        attr_v = float(attr_list[1])
                     except Exception:
                         continue
-                args_dict[attr_list[0]] = attr_value
+                args_dict[attr_list[0]] = attr_v
         if args_dict == {}:
             new_instance = HBNBCommand.classes[args_list[0]]()
         else:
